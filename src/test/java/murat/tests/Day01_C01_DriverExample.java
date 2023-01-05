@@ -1,3 +1,6 @@
+package murat.tests;
+
+
 import murat.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
