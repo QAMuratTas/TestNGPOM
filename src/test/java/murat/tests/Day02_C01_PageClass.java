@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,15 +41,22 @@ public class Day02_C01_PageClass {
 //        - Verify item prices are sorted from low to high with hard Assert.
         List<WebElement> itemPrices = Driver.getDriver().findElements(By.className("inventory_item_price"));
 
-        List<Double> urunFiyatlari = itemPrices.stream()
-                .map(x -> x.getText().substring(1))
-                .map(x -> Double.parseDouble(x))
-                .collect(Collectors.toList());
-
-        for (int i = 0; i < urunFiyatlari.size()-1; i++) {
-
-            Assert.assertTrue(urunFiyatlari.get(i) <= urunFiyatlari.get(i+1));
+//        List<Double> urunFiyatlari = itemPrices.stream()
+//                .map(x -> x.getText().substring(1))
+//                .map(x -> Double.parseDouble(x))
+//                .collect(Collectors.toList());
+        List<Double> listPrices = new ArrayList<>();
+        for (int i = 0; i <itemPrices.size()-1 ; i++) {
+            listPrices.add(Double.parseDouble(itemPrices.get(i).getText().substring(1)));
         }
+        System.out.println(listPrices);
+
+        for (int i = 0; i < listPrices.size()-1; i++) {
+
+            Assert.assertTrue(listPrices.get(i) <= listPrices.get(i+1));
+        }
+
+
 
         Driver.closeDriver();
 
