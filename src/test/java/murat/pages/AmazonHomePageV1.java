@@ -15,8 +15,8 @@ public class AmazonHomePageV1 {
 
   private WebDriver ldriver;
 
-    public AmazonHomePageV1() {
-        this.ldriver=ldriver;
+    public AmazonHomePageV1(WebDriver driver) {
+        this.ldriver=driver;
         PageFactory.initElements(ldriver,this);
 
     }
