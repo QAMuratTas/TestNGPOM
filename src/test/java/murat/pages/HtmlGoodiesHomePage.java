@@ -8,6 +8,7 @@ public class HtmlGoodiesHomePage {
 
 
     public HtmlGoodiesHomePage() {
+
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
