@@ -15,27 +15,38 @@ public class AmazonHomePageV1 {
 
   private WebDriver ldriver;
 
-    public AmazonHomePageV1(WebDriver driver) {
-        this.ldriver=driver;
-        PageFactory.initElements(ldriver,this);
+  public AmazonHomePageV1(WebDriver driver) {
+    this.ldriver = driver;
 
-    }
-    @FindBy(id ="twotabsearchtextbox")
-    private WebElement txtSearch;
-    @FindBy(id ="nav-link-accountList")
-    private WebElement accountAndList;
-    @FindBy(id ="nav_prefetch_yourorders")
-    private WebElement prefetch;
-
-    public void searchFor (String key){
-      txtSearch.sendKeys(key+ Keys.ENTER);
-    }
-    public void navigateToOrder(){
-      Actions actions =new Actions(ldriver);
-      actions.moveToElement(accountAndList).perform();
-      WebDriverWait wait =new WebDriverWait(ldriver, Duration.ofSeconds(10));
-      wait.until(ExpectedConditions.visibilityOf(prefetch)).click();
+    PageFactory.initElements(ldriver, this);
+  }
 
 
-    }
+  @FindBy(id = "twotabsearchtextbox")
+  WebElement txtSearch;
+
+  @FindBy(id = "nav-link-accountList")
+  WebElement accountAndList;
+
+  @FindBy(id = "nav_prefetch_yourorders")
+  WebElement orders;
+
+
+  public void searchFor(String key){
+    txtSearch.sendKeys(key + Keys.ENTER);
+  }
+
+  public void navigateToOrders(){
+    Actions actions = new Actions(ldriver);
+    actions.moveToElement(accountAndList)
+            .perform();
+
+    WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOf(orders)).click();
+
+  }
+
+
+
+
 }
