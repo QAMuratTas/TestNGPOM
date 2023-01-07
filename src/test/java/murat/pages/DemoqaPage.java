@@ -18,7 +18,7 @@ public class DemoqaPage {
     public WebElement interaction;
     @FindBy(xpath = "//span[.='Droppable']")
     public WebElement droppable;
-    @FindBy(id = "draggable")
+    @FindBy(xpath = "//div[@id='draggable']")
     public WebElement draggable;
     @FindBy(id = "droppable")
     public WebElement drophere;
